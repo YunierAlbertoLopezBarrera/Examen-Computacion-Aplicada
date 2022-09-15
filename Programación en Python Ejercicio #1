@@ -1,0 +1,41 @@
+import numpy as np
+import math
+
+r=int(input("introduzca el rango de la matriz  "))
+while r<=2:
+        print("debe ser mayor o igual a 3")
+        r=int(input("introduzca el rango de la matriz  "))
+        if r>2: 
+            break
+
+end=r*r
+Valores = []
+for dividendo in range(2, 100000):     
+        for divisor in range(2, dividendo):
+                if dividendo % divisor == 0:
+                        break
+        else:
+                Valores.append(dividendo)
+        if len(Valores)==end:
+            break
+#print(Valores)
+#print(len(Valores))
+M=np.array(Valores).reshape(r,r)
+#print(M)
+sumaS = 0
+for y in range(len(M[0])):
+     for x in range(y):
+        sumaS = sumaS + M[x][y]
+sumaD = np.trace(M)
+sumaT=sumaD+sumaS
+'\n'
+print('La suma de los valores de la diagonal y sobre esta es:',sumaT)
+'\n'
+t=''
+for i in range(0,r):
+    for j in range(0,r):
+        t=t+' '+str(M[i][j])
+    t=t+'\n'
+print('La matriz de numeros primos consecutivos es:')
+print(t)
+'\n'
